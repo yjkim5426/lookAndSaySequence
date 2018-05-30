@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+
+<body>
+
+<button type="button" onclick="myFunction()">gogo</button>
+
+<script>
+function myFunction() 
+{
+
+	// (4)1211
+	// (5)111221
+    //var currentArray = ["1","2","1","1"];
+
+	var currentArray = [1,1];
+    var nextArray = [];
+    var countLen = 1;
+
+	for (var level=3; level<=10; level++) //max level 62
+	{
+		console.log("Level "+level);
+
+		for (var i=1; i<currentArray.length; i++) 
+		{
+			//console.log("currentArray.length is " + currentArray.length);
+			//console.log(i);
+			if (currentArray[i-1] == currentArray[i])
+				countLen++;
+			else
+			{
+				nextArray.push(countLen);
+				countLen = 1;
+				nextArray.push(currentArray[i-1]);
+			}
+
+			if (i==currentArray.length-1)
+			{
+				nextArray.push(countLen);
+				nextArray.push(currentArray[i]);
+				countLen = 1;
+			}
+		}
+		// console.log("currentArray" + currentArray);
+		// console.log("nextArray" + nextArray);
+		currentArray = nextArray.slice();
+		nextArray = [];
+		// console.log("swap");
+		console.log(currentArray);
+		// console.log("currentArray.length" + currentArray.length);
+	}
+	// }
+	//document.getElementById("level").innerHTML = "level "+parseInt(i+1);    	
+}
+</script>
+
+</body>
+</html>
